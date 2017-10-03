@@ -20,7 +20,7 @@ class messageBuilder:
         :param message: Message received
         """
         data=self.parseKnowledge("knowledge.json")
-        answer=self.getData(data,message)
+        answer=self.compareKnowledge(data,message)
         return answer
     
     def parseKnowledge(self,file):
@@ -28,7 +28,7 @@ class messageBuilder:
         open and load a knowledgeFile
         :param file: File containing knowledge base
         """
-        with codecs.open('knowledge.json',"r","utf_8") as file:
+        with codecs.open('knowledge.json',"r","utf-8") as file:
             data = json.load(file)
         return data
 
@@ -40,6 +40,6 @@ class messageBuilder:
         """
         answer=''
         for i in data:
-            if i.decode('utf_8').lower()==message.decode('utf_8').lower():
-                answer=str(data[i]).decode('utf_8')
+            if i.lower()==message.decode('utf-8').lower():
+                answer=str(data[i]).decode('utf-8')
         return answer

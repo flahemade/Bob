@@ -50,7 +50,7 @@ class Bob(ircbot.SingleServerIRCBot):
                 waitingForAnswer=message
         else:
             kb=knowledgeBuilder()
-            insert=kb(waitingForAnswer,"knowledge.json",message)
+            insert=kb.addEntry(waitingForAnswer,"knowledge.json",message)
             if(insert):
                 serv.privmsg("#Bob","Ok, cimer.")
             waitingForAnswer=''
